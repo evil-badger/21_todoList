@@ -3,11 +3,11 @@ import { todoList } from "../../mockData.js"
 import Button from "../Button/Button.jsx";
 import TodoItem from "../TodoItem/TodoItem.jsx";
 import styles from './Todo.module.scss'
+import CreateTodoPopup from "../CreateTodoPopup/CreateTodoPopup.jsx";
 
 const TodoWrap = () => {
     const [todoListData, setTodoList] = useState(todoList);
 
-    console.log(todoListData);
     const handleCheckTodo = (completed, id) => {
         const copyList = [...todoListData];
 
@@ -18,6 +18,25 @@ const TodoWrap = () => {
         })
         setTodoList(copyList);
     }
+
+    const handleCreateTodoItem = (title) => {
+        const copyList = [...todoListData];
+        console.log(title);
+        const todo = {
+            "userId": 1,
+            "id": (`${title}${((Math.floor(Math.random() * 100) + 1)) }`),
+            "title": title,
+            "completed": false
+        }
+        copyList.push(todo);
+        setTodoList(copyList);
+        console.log(copyList)
+    }
+
+    const handleDeleteTodo=(id)=>{
+        setTodoList(todoListData.filter(el=>el.id!==id));
+    }
+
 
     return (
         <>
@@ -32,12 +51,13 @@ const TodoWrap = () => {
                                     title={todo.title}
                                     completed={todo.completed}
                                     handleCheckTodo={handleCheckTodo}
+                                    handleDeleteTodo={handleDeleteTodo}
                                 />
                             }
                         )
                     }
                 </div>
-
+                <CreateTodoPopup handleCreateTodoItem={handleCreateTodoItem} />
             </div>
         </>
     )

@@ -1,4 +1,5 @@
 const Button=({handleClick,title})=>{
+    console.log(handleClick);
     return(
         <>
             <button

@@ -1,4 +1,12 @@
 .wrap{
-    margin: 20px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 5px;
+}
+
+.inputItem{
+    max-width: 400px;
 }

@@ -1,6 +1,7 @@
 import styles from './TodoItem.module.scss'
+import Button from '../Button/Button'
 
-const TodoItem = ({ id, title, completed, handleCheckTodo }) => {
+const TodoItem = ({ id, title, completed, handleCheckTodo, handleDeleteTodo }) => {
     return (
         <div className={styles.wrap}>
             <input
@@ -12,7 +13,9 @@ const TodoItem = ({ id, title, completed, handleCheckTodo }) => {
                     }
                 }
             />
-            {title}
+            <p className={styles.inputItem}>{title}</p>
+          
+            <Button className={styles.button} title={'Удалить задание'} handleClick={()=>handleDeleteTodo(id)}/>
         </div>
     )
 }
