@@ -21,7 +21,6 @@ const TodoWrap = () => {
 
     const handleCreateTodoItem = (title) => {
         const copyList = [...todoListData];
-        console.log(title);
         const todo = {
             "userId": 1,
             "id": (`${title}${((Math.floor(Math.random() * 100) + 1)) }`),
@@ -30,7 +29,6 @@ const TodoWrap = () => {
         }
         copyList.push(todo);
         setTodoList(copyList);
-        console.log(copyList)
     }
 
     const handleDeleteTodo=(id)=>{
