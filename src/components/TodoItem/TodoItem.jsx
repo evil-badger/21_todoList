@@ -1,7 +1,6 @@
 import styles from './TodoItem.module.scss'
 
 const TodoItem = ({ id, title, completed, handleCheckTodo }) => {
- 
     return (
         <div className={styles.wrap}>
             <input

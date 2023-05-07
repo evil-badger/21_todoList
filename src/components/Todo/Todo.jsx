@@ -7,14 +7,13 @@ import styles from './Todo.module.scss'
 const TodoWrap = () => {
     const [todoListData, setTodoList] = useState(todoList);
 
+    console.log(todoListData);
     const handleCheckTodo = (completed, id) => {
-        console.log(completed);
-        console.log(id);  
-        const copyList=[...todoListData];
-        console.log(copyList); 
-        copyList.forEach((todo)=>{
-            if(todo.id===id){
-                todo.completed==completed;
+        const copyList = [...todoListData];
+
+        copyList.forEach((todo) => {
+            if (todo.id === id) {
+                todo.completed = completed;
             }
         })
         setTodoList(copyList);
@@ -24,15 +23,18 @@ const TodoWrap = () => {
         <>
             <div>
                 <div className={styles.todo}>
-                    {todoListData.map((todo) => {
-                        return <TodoItem
-                            key={todo.id} 
-                            id={todo.id} 
-                            title={todo.title} 
-                            completed={todo.completed}
-                            handleCheckTodo={handleCheckTodo}
-                        />
-                    })
+                    {
+                        todoListData.map(
+                            (todo) => {
+                                return <TodoItem
+                                    key={todo.id}
+                                    id={todo.id}
+                                    title={todo.title}
+                                    completed={todo.completed}
+                                    handleCheckTodo={handleCheckTodo}
+                                />
+                            }
+                        )
                     }
                 </div>
 
